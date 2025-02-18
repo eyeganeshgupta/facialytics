@@ -53,3 +53,18 @@ while True:
             cv2.putText(frame, "Identity verified, access granted", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 2555, 0), 2, cv2.LINE_AA)
         else:
             cv2.putText(frame, "Identity not verified, access denied", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 2555, 0), 2, cv2.LINE_AA)
+        
+        top, right, bottom, left = face_recognition.face_locations(frame)[0]
+        cv2.rectangle(frame, (left, top), (right, bottom + 20), (0, 0, 255), 2)
+
+        cv2.putText(frame, f"Name: {fullName}", (left, bottom + 20), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
+        cv2.putText(frame, f"Age: {age}", (left, bottom + 20), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
+        cv2.putText(frame, f"Gender: {gender}", (left, bottom + 20), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
+    
+    cv2.imshow("Video", frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+videoCapture.release()
+cv2.destroyAllWindows()
