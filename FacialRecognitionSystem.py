@@ -27,8 +27,8 @@ def loadDataFromFolder(folder, metadataFile):
     
     return images, labels, metadata
 
-trainingDataFolder = "D:\\workspace\\facialytics\\training-data";
-metadataFile = "D:\\workspace\\facialytics\\training-data\\data.xlsx";
+trainingDataFolder = "D:/workspace/facialytics/training-data/images/";
+metadataFile = "D:/workspace/facialytics/training-data/data.xlsx";
 
 knownFaceEncoding, knownFaceNames, metadata = loadDataFromFolder(trainingDataFolder, metadataFile)
 
@@ -55,11 +55,11 @@ while True:
             cv2.putText(frame, "Identity not verified, access denied", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 2555, 0), 2, cv2.LINE_AA)
         
         top, right, bottom, left = face_recognition.face_locations(frame)[0]
-        cv2.rectangle(frame, (left, top), (right, bottom + 20), (0, 0, 255), 2)
+        cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
 
         cv2.putText(frame, f"Name: {fullName}", (left, bottom + 20), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
-        cv2.putText(frame, f"Age: {age}", (left, bottom + 20), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
-        cv2.putText(frame, f"Gender: {gender}", (left, bottom + 20), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
+        cv2.putText(frame, f"Age: {age}", (left, bottom + 40), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
+        cv2.putText(frame, f"Gender: {gender}", (left, bottom + 60), cv2.FONT_HERSHEY_DUPLEX, 0.8, (255, 255, 255), 1)
     
     cv2.imshow("Video", frame)
 
